@@ -16,15 +16,18 @@ public class Game {
 	public void run() {
 		this.map.print();
 		System.out.println();
+		int movimentsNumber = 0;
 		while(true) {
 			Point nextPoint = this.player.evaluatePossbileNextStep(map);
 			if (nextPoint == null) {
 				break;
 			} else {
+				++movimentsNumber;
 				String space = this.map.get(nextPoint);
 				if (space != null && space.equals(TreasureChest.CHARACTER)) {
 					this.map.openTreasureChest(nextPoint);
 					this.map.print();
+					System.out.println("Movimentos: " + movimentsNumber + "x");
 					break;
 				} else {
 					this.map.moveRobot(nextPoint);					
