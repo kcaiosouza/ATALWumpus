@@ -2,5 +2,6 @@
 .project
 .idea
 *.iml
+/out
 .settings
 bin
