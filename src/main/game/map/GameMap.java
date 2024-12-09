@@ -9,7 +9,7 @@ import java.util.Random;
 
 import main.game.Player;
 
-public class Map {
+public class GameMap {
 	private static final int[] ROCK_POSITIONS_X = {0, 1, 2, 3, 4, 5, 6};
 	private static final int[] ROCK_POSITIONS_Y = {0, 1, 2, 3, 4, 5, 6};
 
@@ -18,7 +18,7 @@ public class Map {
 	
 	private HashMap<String, Point> treasureChests;
 	
-	public Map (int scenarioSizeX, int scenarioSizeY) {
+	public GameMap(int scenarioSizeX, int scenarioSizeY) {
 		this.treasureChests = new HashMap<>();
 		this.scenario = new String[scenarioSizeX][scenarioSizeY];
 		this.robotLocation = new Point(0,0);
@@ -211,5 +211,13 @@ public class Map {
 	public int[] getScenarioSize() {
 		int[] size = {this.scenario.length, this.scenario[0].length};
 		return size;
+	}
+
+	public String[ ][ ] getScenario(){
+		return this.scenario;
+	}
+
+	public Point getTreasureLocation (){
+		return this.treasureChests.get(TreasureChest.CHEST_TRESURE_CHARACTER);
 	}
 }

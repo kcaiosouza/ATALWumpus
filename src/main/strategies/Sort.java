@@ -3,7 +3,6 @@ package main.strategies;
 import java.util.List;
 import java.util.Random;
 
-import main.game.Player;
 import main.game.map.*;
 
 public class Sort implements Strategy{
@@ -14,12 +13,12 @@ public class Sort implements Strategy{
 	 * p6 p7 p8
 	 */
 	@Override
-	public Point evaluatePossbileNextStep(List<Point> possibleNextSteps, Map map) {
+	public Point evaluatePossbileNextStep(List<Point> possibleNextSteps, GameMap gameMap) {
 		boolean sortPointIsObstacle = true;
 		while(sortPointIsObstacle) {
 			Random random = new Random();
 			int index = random.nextInt(possibleNextSteps.size());
-			String space = map.get(possibleNextSteps.get(index));
+			String space = gameMap.get(possibleNextSteps.get(index));
 			if(space == null || space.equals("*") || space.equals(TreasureChest.CHARACTER) && !space.equals(Monster.CHARACTER) && !space.equals(Rock.CHARACTER)) {
 				return possibleNextSteps.get(index);
 			}

@@ -1,7 +1,6 @@
 package main.game.map;
 
 public class Point {
-	private String id;
 	private int positionX;
 	private int positionY;
 	private double weight;
@@ -33,12 +32,9 @@ public class Point {
 	}
 
 	public String getId() {
-		return id;
+		return getPositionX() + "-" + getPositionY();
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 	@Override
 	public boolean equals(Object obj) {
 		Point p = (Point) obj;
