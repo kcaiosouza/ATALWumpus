@@ -1,20 +1,16 @@
 package main.strategies;
 
 import java.util.List;
-import java.util.Comparator;
-import java.util.ArrayList;
-import java.util.Collections;
 
-import main.game.map.Map;
+import main.game.map.GameMap;
 import main.game.map.Point;
-import main.game.map.TreasureChest;
 
 public class ShortestDistance implements Strategy {
 
 	@Override
-	public Point evaluatePossbileNextStep(List<Point> possibleNextSteps, Map map) {
+	public Point evaluatePossbileNextStep(List<Point> possibleNextSteps, GameMap gameMap) {
 		
-	    Point currentPoint = map.getRobotLocation();
+	    Point currentPoint = gameMap.getRobotLocation();
 	    Point closestTreasure = null;
 	    double shortestDistance = Double.MAX_VALUE;
 

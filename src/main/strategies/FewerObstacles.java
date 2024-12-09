@@ -16,13 +16,13 @@ public class FewerObstacles implements Strategy{
 	 */
 
 	@Override
-	public Point evaluatePossbileNextStep(List<Point> possibleNextStep, Map map) {
+	public Point evaluatePossbileNextStep(List<Point> possibleNextStep, GameMap gameMap) {
 		Iterator<Point> step = possibleNextStep.iterator();
 		int min = Integer.MAX_VALUE; // Assume o maior valor possível para no count conseguir fazer a verificação de menor no if logo a baixo
 		Point pointSelected = null; // Ou seja, não escolheu nenhum ponto para ir
 		while(step.hasNext()){
 			Point point = step.next();
-			int count =	ratePoint(point, map);
+			int count =	ratePoint(point, gameMap);
 			if(count < min) {
 				min = count;
 				pointSelected = point;
@@ -31,7 +31,7 @@ public class FewerObstacles implements Strategy{
 		return pointSelected;
 	}
 
-	private int ratePoint(Point point, Map map) {
+	private int ratePoint(Point point, GameMap gameMap) {
 		int count = 0;
 		List<Point> allPoints = new ArrayList<Point>();
 		allPoints.add(new Point(point.getPositionX() - 1, point.getPositionY() - 1));
@@ -45,8 +45,8 @@ public class FewerObstacles implements Strategy{
 
 		for(int i = 0; i < allPoints.size(); i++) {
 			Point currentPoint = allPoints.get(i);
-			Point playerPosition = map.getRobotLocation();
-			int[] scenarioSize = map.getScenarioSize();
+			Point playerPosition = gameMap.getRobotLocation();
+			int[] scenarioSize = gameMap.getScenarioSize();
 			if(
 					!(currentPoint.getPositionX() == playerPosition.getPositionX() && currentPoint.getPositionY() == playerPosition.getPositionY()) ||
 					currentPoint.getPositionX() < 0 || currentPoint.getPositionX() >= scenarioSize[0] ||
@@ -54,10 +54,10 @@ public class FewerObstacles implements Strategy{
 			) {
 				continue;
 			}else {
-				if(map.get(currentPoint).equals(Rock.CHARACTER) || map.get(currentPoint).equals(Monster.CHARACTER)) {
+				if(gameMap.get(currentPoint).equals(Rock.CHARACTER) || gameMap.get(currentPoint).equals(Monster.CHARACTER)) {
 					count++;
 				}else {
-					if(map.get(currentPoint).equals(TreasureChest.CHARACTER)) {
+					if(gameMap.get(currentPoint).equals(TreasureChest.CHARACTER)) {
 						count = 0;
 					}
 				}
