@@ -212,4 +212,12 @@ public class GameMap {
 		int[] size = {this.scenario.length, this.scenario[0].length};
 		return size;
 	}
+
+	public String[ ][ ] getScenario(){
+		return this.scenario;
+	}
+
+	public Point getTreasureLocation (){
+		return this.treasureChests.get(TreasureChest.CHEST_TRESURE_CHARACTER);
+	}
 }

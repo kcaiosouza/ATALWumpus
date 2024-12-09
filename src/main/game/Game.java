@@ -4,6 +4,7 @@ import main.game.map.GameMap;
 import main.game.map.Point;
 import main.game.map.TreasureChest;
 import main.strategies.*;
+import main.strategies.binaryTree.BinaryTree;
 
 public class Game {
 	private GameMap gameMap;
@@ -18,6 +19,8 @@ public class Game {
 			this.player = new Player(new ShortestDistance());
 		}else if (type.equals("voting")) {
 			this.player = new Player(new Voting());
+		}else if (type.equals("binary")) {
+			this.player = new Player(new BinaryTree(this.gameMap));
 		}
 	}
 	
