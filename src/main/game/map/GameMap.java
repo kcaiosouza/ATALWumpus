@@ -190,22 +190,25 @@ public class GameMap {
 		this.robotLocation = nextPoint;
 	}
 
-	public void openTreasureChest(Point nextPoint) {
+	public boolean openTreasureChest(Point nextPoint) {
 		Iterator<String> it = treasureChests.keySet().iterator();
 		while(it.hasNext()) {
 			String key = it.next();
 			if (treasureChests.get(key).equals(nextPoint)) {
 				if(key.equals(TreasureChest.CHEST_TRESURE_CHARACTER)) {
 					System.out.println("Parabéns você encontrou o tesouro!");
+					return true;
 				} else if (key.equals(TreasureChest.CHEST_TRAP_CHARACTER)) {
 					System.out.println("O jogo acabou! Você morreu, caiu em uma armadilha");
+					return false;
 				} else {
 					System.out.println("Aqui não tem nada");
 				}
 				this.scenario[nextPoint.getPositionX()][nextPoint.getPositionY()] = key;
-				break;
+				return false;
 			}
 		}
+		return false;
 	}
 
 	public int[] getScenarioSize() {

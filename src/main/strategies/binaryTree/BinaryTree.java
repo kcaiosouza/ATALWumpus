@@ -19,7 +19,7 @@ public class BinaryTree implements Strategy {
         map.print();
         this.gameMap = map;
         this.pointT = false;
-        System.out.println("");
+        //System.out.println("");
         this.root = new NodeTree<>();
         this.sequenceSelected = new LinkedList<>();
 
@@ -115,7 +115,7 @@ public class BinaryTree implements Strategy {
         }
 
         path.removeLast();
-        System.out.println("");
+        //System.out.println("");
         return false;
     }
 

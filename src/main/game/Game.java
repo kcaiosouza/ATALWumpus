@@ -24,22 +24,25 @@ public class Game {
 		}
 	}
 	
-	public void run() {
+	public boolean run() {
 		this.gameMap.print();
 		System.out.println();
 		int movimentsNumber = 0;
-		while(true) {
+		for (int i = 0; i < 500; i++) {
 			Point nextPoint = this.player.evaluatePossbileNextStep(gameMap);
 			if (nextPoint == null) {
-				break;
+				return false;
 			} else {
 				++movimentsNumber;
 				String space = this.gameMap.get(nextPoint);
 				if (space != null && space.equals(TreasureChest.CHARACTER)) {
-					this.gameMap.openTreasureChest(nextPoint);
+					boolean success = this.gameMap.openTreasureChest(nextPoint);
 					this.gameMap.print();
 					System.out.println("Movimentos: " + movimentsNumber + "x");
-					break;
+					if(success) {
+						return true;
+					}
+					return false;
 				} else {
 					this.gameMap.moveRobot(nextPoint);
 				}
@@ -47,6 +50,12 @@ public class Game {
 			this.gameMap.print();
 			System.out.println();
 		}
+
+		if (movimentsNumber == 500) {
+			System.out.println("Limite de movimentos atingido: 500.");
+		}
+
+		return false;
 	}
 
 }
