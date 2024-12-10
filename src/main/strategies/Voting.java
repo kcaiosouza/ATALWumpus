@@ -28,9 +28,9 @@ public class Voting implements Strategy {
         points.put(fewerPointId, fewerPoint);
         points.put(shortestPointId, shortestPoint);
 
-        voting.put(sortPointId, voting.getOrDefault(sortPointId, 0) + 1);
-        voting.put(fewerPointId, voting.getOrDefault(fewerPointId, 0) + 1);
         voting.put(shortestPointId, voting.getOrDefault(shortestPointId, 0) + 1);
+        voting.put(fewerPointId, voting.getOrDefault(fewerPointId, 0) + 1);
+        voting.put(sortPointId, voting.getOrDefault(sortPointId, 0) + 1);
 
         return getMostVotedPoint(voting, points);
     }

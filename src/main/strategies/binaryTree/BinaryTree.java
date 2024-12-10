@@ -138,7 +138,6 @@ public class BinaryTree implements Strategy {
                 newNode.setTreasure(this.gameMap.getTreasureLocation());
             }
 
-            // Prioritize nodes leading to the treasure
             NodeTree<String> leftNode = buildTreeAndCalculatePath(map, i + 1, j);
             NodeTree<String> rightNode = buildTreeAndCalculatePath(map, i, j + 1);
 

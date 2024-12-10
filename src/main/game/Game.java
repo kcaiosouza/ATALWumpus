@@ -24,14 +24,14 @@ public class Game {
 		}
 	}
 	
-	public boolean run() {
+	public int run() {
 		this.gameMap.print();
 		System.out.println();
 		int movimentsNumber = 0;
 		for (int i = 0; i < 500; i++) {
 			Point nextPoint = this.player.evaluatePossbileNextStep(gameMap);
 			if (nextPoint == null) {
-				return false;
+				return movimentsNumber;
 			} else {
 				++movimentsNumber;
 				String space = this.gameMap.get(nextPoint);
@@ -40,9 +40,9 @@ public class Game {
 					this.gameMap.print();
 					System.out.println("Movimentos: " + movimentsNumber + "x");
 					if(success) {
-						return true;
+						return movimentsNumber;
 					}
-					return false;
+					return movimentsNumber;
 				} else {
 					this.gameMap.moveRobot(nextPoint);
 				}
@@ -55,7 +55,7 @@ public class Game {
 			System.out.println("Limite de movimentos atingido: 500.");
 		}
 
-		return false;
+		return movimentsNumber;
 	}
 
 }

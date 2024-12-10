@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Execute {
 	public static void main(String[] args) {
-		/*Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		int option = -1;
 
 		while(option != 0){
@@ -44,17 +44,7 @@ public class Execute {
 				System.out.println("Opção inválida. Tente novamente.");
 			}
 
-		}*/
-
-		int totalSuccesses = 0;
-
-		for (int i = 0; i < 1; i++) {
-			Game game = new Game("sort");
-			if (game.run()) {
-				totalSuccesses++;
-			}
 		}
 
-		System.out.println("O método encontrou o tesouro " + totalSuccesses + " vezes em 100 execuções.");
 	}
 }
